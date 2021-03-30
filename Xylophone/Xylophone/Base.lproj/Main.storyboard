@@ -27,6 +27,9 @@
                                                 <state key="normal" title="C">
                                                     <color key="titleColor" red="0.9999235272" green="1" blue="0.99988299609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="keyPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7FT-U4-bpS"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.5" green="0.099999999999999978" blue="0.099999999999999978" alpha="1" colorSpace="calibratedRGB"/>
@@ -46,6 +49,9 @@
                                                 <state key="normal" title="D">
                                                     <color key="titleColor" red="0.9999235272" green="1" blue="0.99988299609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="keyPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ixj-ET-NiO"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.5" green="0.16666666666666669" blue="0.099999999999999978" alpha="1" colorSpace="calibratedRGB"/>
@@ -65,6 +71,9 @@
                                                 <state key="normal" title="E">
                                                     <color key="titleColor" red="0.9999235272" green="1" blue="0.99988299609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="keyPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="x0r-WB-oz9"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.5" green="0.23333333333333334" blue="0.099999999999999978" alpha="1" colorSpace="calibratedRGB"/>
@@ -84,6 +93,9 @@
                                                 <state key="normal" title="F">
                                                     <color key="titleColor" red="0.9999235272" green="1" blue="0.99988299609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="keyPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xPn-cO-Ykv"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.5" green="0.29999999999999999" blue="0.099999999999999978" alpha="1" colorSpace="calibratedRGB"/>
@@ -103,6 +115,9 @@
                                                 <state key="normal" title="G">
                                                     <color key="titleColor" red="0.9999235272" green="1" blue="0.99988299609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="keyPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HNs-Rm-gjX"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.5" green="0.3666666666666667" blue="0.099999999999999978" alpha="1" colorSpace="calibratedRGB"/>
@@ -122,6 +137,9 @@
                                                 <state key="normal" title="A">
                                                     <color key="titleColor" red="0.9999235272" green="1" blue="0.99988299609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="keyPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="U8U-rh-za8"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.5" green="0.43333333333333335" blue="0.099999999999999978" alpha="1" colorSpace="calibratedRGB"/>
