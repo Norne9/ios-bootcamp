@@ -13,6 +13,7 @@
 		4EAA23B0261300D000E046E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EAA23AE261300D000E046E9 /* Main.storyboard */; };
 		4EAA23B2261300D100E046E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EAA23B1261300D100E046E9 /* Assets.xcassets */; };
 		4EAA23B5261300D100E046E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EAA23B3261300D100E046E9 /* LaunchScreen.storyboard */; };
+		4EAA23BF2613310C00E046E9 /* CalculatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAA23BE2613310C00E046E9 /* CalculatorModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		4EAA23B1261300D100E046E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4EAA23B4261300D100E046E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4EAA23B6261300D100E046E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4EAA23BE2613310C00E046E9 /* CalculatorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				4EAA23B1261300D100E046E9 /* Assets.xcassets */,
 				4EAA23B3261300D100E046E9 /* LaunchScreen.storyboard */,
 				4EAA23B6261300D100E046E9 /* Info.plist */,
+				4EAA23BE2613310C00E046E9 /* CalculatorModel.swift */,
 			);
 			path = Calculator;
 			sourceTree = "<group>";
@@ -140,6 +143,7 @@
 				4EAA23AD261300D000E046E9 /* ViewController.swift in Sources */,
 				4EAA23A9261300D000E046E9 /* AppDelegate.swift in Sources */,
 				4EAA23AB261300D000E046E9 /* SceneDelegate.swift in Sources */,
+				4EAA23BF2613310C00E046E9 /* CalculatorModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
