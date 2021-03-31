@@ -55,6 +55,12 @@ class ViewController: UIViewController {
         } else {
             print("Player for \(sound) not found!")
         }
+        
+        // Dim button
+        sender.superview?.alpha /= 2.0
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            sender.superview?.alpha *= 2.0
+        }
     }
     
 }
