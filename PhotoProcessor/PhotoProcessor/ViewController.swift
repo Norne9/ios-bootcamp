@@ -9,20 +9,24 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var filtersView: UIStackView!
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var originalImageView: UIImageView!
+    @IBOutlet weak var editedImageView: UIImageView!
+    @IBOutlet weak var compareButton: UIButton!
+    
     
     let imageProcessor = ImageProcessor()
-    var originalImage: UIImage?
-    var processedImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        originalImage = imageView.image
-        processedImage = originalImage
+        let image = UIImage(named: "TestImage")
+        originalImageView.image = image
+        originalImageView.alpha = 1.0
+        editedImageView.image = image
+        editedImageView.alpha = 0.0
         
-        filtersView.alpha = 0.8
         addFilterButtons(names: imageProcessor.knownFilters)
+        compareButton.isEnabled = false
     }
 
     func addFilterButtons(names: [String]) {
@@ -37,9 +41,15 @@ class ViewController: UIViewController {
     }
     
     @objc func filterPressed(sender: UIButton) {
+        compareButton.isEnabled = true
         do {
-            processedImage = try imageProcessor.applyFilter(sender.currentTitle, to: originalImage, withPower: 1.0)
-            imageView.image = processedImage
+            let processedImage = try imageProcessor.applyFilter(sender.currentTitle, to: originalImageView.image, withPower: 1.0)
+            editedImageView.image = processedImage
+            
+            UIView.animate(withDuration: 0.5) {
+                self.originalImageView.alpha = 0.0
+                self.editedImageView.alpha = 1.0
+            }
         } catch FilterError.noImage {
             showError("No image!")
         } catch FilterError.processingError {
@@ -54,16 +64,41 @@ class ViewController: UIViewController {
     }
     
     @IBAction func toggleFilters(_ sender: UIButton) {
-        UIView.animate(withDuration: 0.5) {
-            if self.filtersView.isHidden {
-                self.filtersView.isHidden = false
-                sender.isSelected = true
-            } else {
-                self.filtersView.isHidden = true
+        let hide = sender.isSelected
+        self.filtersView.isUserInteractionEnabled = !hide
+        UIView.animate(withDuration: 0.5, animations: {
+            if hide {
+                self.filtersView.alpha = 0.0
                 sender.isSelected = false
+            } else {
+                self.filtersView.alpha = 1.0
+                sender.isSelected = true
+            }
+        })
+    }
+    
+    
+    @IBAction func toggleCompare(_ sender: Any) {
+        selectImage(isOriginal: self.originalImageView.alpha < 0.5)
+    }
+    @IBAction func imageTouchDown(_ sender: UIButton) {
+        selectImage(isOriginal: true)
+    }
+    @IBAction func imageTouchUp(_ sender: UIButton) {
+        selectImage(isOriginal: false)
+    }
+    func selectImage(isOriginal: Bool) {
+        UIView.animate(withDuration: 0.5) {
+            if isOriginal {
+                self.originalImageView.alpha = 1.0
+                self.editedImageView.alpha = 0.0
+            } else {
+                self.originalImageView.alpha = 0.0
+                self.editedImageView.alpha = 1.0
             }
         }
     }
+    
     
     
     func showError(_ error: String) {
