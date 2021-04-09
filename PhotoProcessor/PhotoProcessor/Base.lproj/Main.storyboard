@@ -18,16 +18,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FPe-Jv-EdD">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="768"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Z8Y-3S-6VR" userLabel="Original">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="768"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2dU-Xs-012" userLabel="Edited">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="768"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3f-rk-iVj" userLabel="Preview Button">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="768"/>
                                         <connections>
                                             <action selector="imageTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="Up5-Qo-LMg"/>
                                             <action selector="imageTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8kn-ko-NAe"/>
@@ -51,12 +51,24 @@
                                     <constraint firstAttribute="bottom" secondItem="b3f-rk-iVj" secondAttribute="bottom" id="yVB-XB-kWb"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="rYY-dW-b7g" userLabel="Filters">
-                                <rect key="frame" x="0.0" y="762" width="414" height="50"/>
+                            <stackView opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="45Z-bE-Fbi" userLabel="Filters Panel">
+                                <rect key="frame" x="0.0" y="732" width="414" height="80"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="rYY-dW-b7g" userLabel="Filter Buttons">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="RUX-Xg-PTB"/>
+                                        </constraints>
+                                    </stackView>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="z9U-B5-wYC">
+                                        <rect key="frame" x="-2" y="50" width="418" height="31"/>
+                                        <connections>
+                                            <action selector="powerChanged:" destination="BYZ-38-t0r" eventType="touchUpOutside" id="CoE-OU-MhI"/>
+                                            <action selector="powerChanged:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kNM-9y-2mh"/>
+                                        </connections>
+                                    </slider>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="a3O-zd-0g6"/>
-                                </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Us4-Ao-AxW" userLabel="Buttons">
                                 <rect key="frame" x="0.0" y="812" width="414" height="50"/>
@@ -98,22 +110,23 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Us4-Ao-AxW" firstAttribute="top" secondItem="45Z-bE-Fbi" secondAttribute="bottom" id="298-Hk-TtA"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FPe-Jv-EdD" secondAttribute="trailing" id="2Ha-4i-15O"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Us4-Ao-AxW" secondAttribute="bottom" id="2nt-7I-P8R"/>
+                            <constraint firstItem="45Z-bE-Fbi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="4vB-55-PHA"/>
                             <constraint firstItem="Us4-Ao-AxW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7V0-If-GYb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Us4-Ao-AxW" secondAttribute="trailing" id="QBl-hz-Ufd"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="FPe-Jv-EdD" secondAttribute="bottom" id="RtQ-2j-Egv"/>
-                            <constraint firstItem="Us4-Ao-AxW" firstAttribute="top" secondItem="rYY-dW-b7g" secondAttribute="bottom" id="cOE-Q6-xyd"/>
                             <constraint firstItem="FPe-Jv-EdD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="dGi-es-qmX"/>
-                            <constraint firstItem="rYY-dW-b7g" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pBw-Oo-0FZ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rYY-dW-b7g" secondAttribute="trailing" id="xei-bD-wNS"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="45Z-bE-Fbi" secondAttribute="trailing" id="hUg-94-Gwb"/>
+                            <constraint firstItem="Us4-Ao-AxW" firstAttribute="top" secondItem="FPe-Jv-EdD" secondAttribute="bottom" id="qVz-uH-FY2"/>
                             <constraint firstItem="FPe-Jv-EdD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ydv-9f-uJO"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="compareButton" destination="AQF-EF-GRs" id="fTP-rK-XxK"/>
                         <outlet property="editedImageView" destination="2dU-Xs-012" id="CJe-v5-FaM"/>
-                        <outlet property="filtersView" destination="rYY-dW-b7g" id="boi-Tc-alw"/>
+                        <outlet property="filtersHolder" destination="rYY-dW-b7g" id="boi-Tc-alw"/>
+                        <outlet property="filtersPanel" destination="45Z-bE-Fbi" id="PMb-1P-9bq"/>
                         <outlet property="originalImageView" destination="Z8Y-3S-6VR" id="eDx-5O-sgV"/>
                     </connections>
                 </viewController>

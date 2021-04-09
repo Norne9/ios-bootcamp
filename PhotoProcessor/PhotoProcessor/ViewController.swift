@@ -8,13 +8,16 @@
 import UIKit
 
 class ViewController: UIViewController {
-    @IBOutlet weak var filtersView: UIStackView!
+    @IBOutlet weak var filtersHolder: UIStackView!
+    @IBOutlet weak var filtersPanel: UIStackView!
     @IBOutlet weak var originalImageView: UIImageView!
     @IBOutlet weak var editedImageView: UIImageView!
     @IBOutlet weak var compareButton: UIButton!
     
     
     let imageProcessor = ImageProcessor()
+    var selectedFilter: String? = nil
+    var selectedPower = 0.5
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,20 +33,38 @@ class ViewController: UIViewController {
     }
 
     func addFilterButtons(names: [String]) {
+        let baseImage = #imageLiteral(resourceName: "ImageIcon")
+        
         for name in names {
+            let procImage = try! imageProcessor.applyFilter(name, to: baseImage, withPower: 1.0)
+            let icon = UIImageView(image: procImage)
+            icon.contentMode = .scaleAspectFit
+            filtersHolder.addArrangedSubview(icon)
+            
             let button = UIButton(type: .system)
             button.setTitle(name, for: .normal)
             button.translatesAutoresizingMaskIntoConstraints = false
             button.addTarget(self, action: #selector(filterPressed(sender:)), for: .touchUpInside)
-            filtersView.addArrangedSubview(button)
+            filtersHolder.addArrangedSubview(button)
         }
-        filtersView.layoutIfNeeded()
+        filtersHolder.layoutIfNeeded()
     }
     
     @objc func filterPressed(sender: UIButton) {
+        selectedFilter = sender.currentTitle
+        updateFilter()
+    }
+    @IBAction func powerChanged(_ sender: UISlider) {
+        selectedPower = Double(sender.value)
+        if selectedFilter != nil {
+            updateFilter()
+        }
+    }
+    
+    func updateFilter() {
         compareButton.isEnabled = true
         do {
-            let processedImage = try imageProcessor.applyFilter(sender.currentTitle, to: originalImageView.image, withPower: 1.0)
+            let processedImage = try imageProcessor.applyFilter(selectedFilter, to: originalImageView.image, withPower: selectedPower)
             editedImageView.image = processedImage
             
             UIView.animate(withDuration: 0.5) {
@@ -63,15 +84,16 @@ class ViewController: UIViewController {
         }
     }
     
+    
     @IBAction func toggleFilters(_ sender: UIButton) {
         let hide = sender.isSelected
-        self.filtersView.isUserInteractionEnabled = !hide
+        self.filtersPanel.isUserInteractionEnabled = !hide
         UIView.animate(withDuration: 0.5, animations: {
             if hide {
-                self.filtersView.alpha = 0.0
+                self.filtersPanel.alpha = 0.0
                 sender.isSelected = false
             } else {
-                self.filtersView.alpha = 1.0
+                self.filtersPanel.alpha = 0.85
                 sender.isSelected = true
             }
         })
@@ -98,7 +120,6 @@ class ViewController: UIViewController {
             }
         }
     }
-    
     
     
     func showError(_ error: String) {

@@ -47,7 +47,10 @@ class ImageProcessor {
         guard let newImage = filterFunc(image, power) else {
             throw FilterError.processingError
         }
-        return UIImage(ciImage: newImage)
+        guard let fixedImage = context.createCGImage(newImage, from: image.extent) else {
+            throw FilterError.processingError
+        }
+        return UIImage(cgImage: fixedImage)
     }
     
     static func applySepia(image: CIImage, power: Double) -> CIImage? {
